@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Stephen Labay Baseball</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
+<link rel="stylesheet" href="Test.CSS">
+<body style="background-color: lightgray;">
+
+<!-- Navbar -->
+<div style="color: white;">
+  <div class="elements w3-bar w3-card">
+    <a class="w3-hide-medium w3-hide-large" style="float: right;background-color:#0099ff; color: white; padding: 5px;" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="Test.html" class="w3-bar-item" style="background-color: white; color: black;">Home</a>
+    <div class="nav-ele">
+      <a href="Test_Former_Players.html" class="w3-bar-item">Former Players</a>
+      <a href="Test_Weekly_Lessons.html" class="w3-bar-item">Weekly Lessons</a>
+      <a href="#" class="logged-out w3-bar-item" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
+      <a href="#" class="logged-in w3-bar-item" id="logout" style="display: none;">Logout</a>
+  </div>
+</div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="Test.html" class="w3-bar-item">Home</a>
+    <a href="Test_Former_Players.html" class="w3-bar-item">Former Players</a>
+    <a href="Test_Weekly_Lessons.html" class="w3-bar-item">Weekly Lessons</a>
+    <a href="#" class="logged-out w3-bar-item" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
+    <a href="#" class="logged-in w3-bar-item" id="logout" style="display: none;">Logout</a>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-container" style="text-align: center; padding:128px 16px; background-color: #0099ff;">
+  <h1 style="color: white; font-size: 50px; margin-bottom: 30px;">Stephen Labay Baseball Lessons</h1>
+  <p style="color: white; font-size: 25px;">Available for Hitting and Pitching Lessons</p>
+  <button type="button" onclick="document.getElementById('id01').style.display='block'" class="w3-button" style="padding: 20px; font-size: 20px; background-color: black; margin-top: 20px; color: white;" data-toggle="modal">Schedule a Lesson!</button>
+</header>
+
+<!-- Schedule Lesson Modal -->
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <header class="w3-container" style="background-color: #0099ff;"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-button w3-hover-red w3-display-topright">&times;</span>
+        <h2>Schedule a Lesson!</h2>
+      </header>
+      <div class="w3-container">
+        <p>Phone number: 512-940-5604</p>
+        <p>Email: slabay@me.com</p>
+      </div>
+      <footer class="w3-container" style="background-color: #0099ff;">
+        <p>Please text or email Stephen for more information</p>
+      </footer>
+    </div>
+  </div>
+</div>
+
+
+<!-- login modal -->
+<div id="modal-login" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-zoom" >
+      <div class="w3-center"><br>
+          <span onclick="document.getElementById('modal-login').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+        </div>
+        <form class="w3-container" id="login-form">
+          <div class="w3-section">
+            <label><b>Email</b></label>
+            <input class="w3-input w3-border w3-margin-bottom" id="login-email" type="text" placeholder="Enter Email" name="usrname" required>
+            <label><b>Password</b></label>
+            <input class="w3-input w3-border" id="login-password" type="password" placeholder="Enter Password" name="psw" required>
+            <button class="w3-button w3-block w3-blue w3-section w3-padding" id="btnSave" type="submit">Login</button>
+          </div>
+        </form>
+  </div>
+</div>
+
+<!-- Edit Modal HTML -->
+<div id="editDescModal" class="modal" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="edit-Desc-form">
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Description</h4>
+          <button type="button" id="RedX" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Update</label>
+            <input type="text" TextMode="MultiLine" Rows="2" id="Updated-desc" class="form-control" data-key='UpdatedDesc' required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
+          <input type="submit" class="btn btn-info" id="SaveUpdate" value="Save">
+        </div>
+      </form>
+    </div>
+  </div>
+</div> 
+
+
+<div class="col-lg-12">
+  <div class="container" id="container">
+         <!-----------post pic starts -------------->
+    <div class="jumbotron bg-dark logged-in" style="margin-top: 15px;">
+      <script>
+        var counter = 0;
+      </script>
+      <div class="container text-center">
+        <form id="main-form">
+          <div class="form-group">
+            <textarea name="text" rows="2" placeholder="Write a Review" class="form-control" id="main-desc"></textarea>
+              <div class="invalid-feedback">
+                 please write description
+                </div>
+            </div>
+            <div class="form-group">
+              <input type="file" class="form-control" id="main-image" />
+                <div class="invalid-feedback">
+                  please choose valid pic
+                  </div>
+              </div>
+            <div class="form-group">
+              <img id="selected-image" width="500" height="150" src="#" />
+
+              </div>
+            <div class="form-group">
+             <div class="progress bg-secondary">
+               <div class="progress-bar bg-success" id="upload-progress" style="width: 0%;"></div>
+                </div>
+
+            </div>
+              <div class="form-group">
+                <button id="save-post" type="button" style="width: 150px; height: 60px;" class="btn btn-light bg-light text-dark">Submit</button>
+                </div>
+          </form>
+                 <div id="result">
+
+                 </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container" style="background-color: lightgray;">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>About Stephen</h1>
+      <h5 class="w3-padding-32">Stephen Labay is a Angleton High School 4-year letterman in Baseball, with All-
+        District honors 1978, 1979, and 1980. After graduation he attended Angelina Junior College in Lufkin, named All-
+        Conference Baseball Team in 1981 and 1982.
+        
+        <br><br>Stephen went on to play at the University of Texas at Austin, named to the All-
+        Region team in 1983 and 1984. He was a member of the 1983 College World
+        Series Championship Team, and Co-Captain of the runner up College World Series
+        team in 1984. Stephen played the positions of Pitcher, First Baseman, and Outfielder throughout
+        his high school and collegiate career.
+        
+        <br><br>He graduated with a BBA degree in Business Management. Stephen continued his
+        baseball career as a professional pitcher with the Philadelphia Phillies
+        Organization.
+    
+        Upon retirement from baseball Stephen worked as a sales manager for Blue Bell
+        Creameries for 8 years. He has been teaching baseball for the past 25 years; working with players at
+        youth, college, and professional levels. In 2010 and 2012 Stephen served as the hitting coach for the Swedish National
+        team in the European baseball League.
+        
+        <br><br>Also in 2010 he was inducted to Angleton High School Wildcat Hall of Fame for his
+        achievements both on and off the field. Stephen and his wife Carla have been married for over 30 years and reside in
+        Austin with their 2 dogs Doc and Schultz.</h5>
+    </div>
+
+    <div class="w3-third w3-center">
+      <img src="IMG_2687.PNG" style="max-width: 400px; max-height: 400px; position: relative; top: 100px;" hspace="80" ></img>
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container" style="background-color: #0099ff;">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      
+      <!-- Slideshow container -->
+    <div class="slideshow-container" style="position: relative; right: 80px;">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides">
+        <div class="numbertext">1 / 4</div>
+        <img src="IMG_0911.jpeg" style="width:100%">
+        </div>
+    
+        <div class="mySlides">
+        <div class="numbertext">2 / 4</div>
+        <img src="IMG_1028.jpeg" style="width:100%">
+        </div>
+    
+        <div class="mySlides">
+        <div class="numbertext">3 / 4</div>
+        <img src="IMG_1156.jpeg" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+            <div class="numbertext">4 / 4</div>
+            <img src="IMG_1370.jpeg" style="width:100%">
+            </div>
+    
+        <!-- Next and previous buttons -->
+        <a class="prev" style="color: white;" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" style="color: white;" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br>
+    
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+        <span class="dot" onclick="currentSlide(4)"></span> 
+    </div>
+            <!-- <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i> -->
+        </div>
+
+    <div class="w3-twothird">
+      <h1>About the Lessons</h1>
+      <h5 class="w3-padding-32">Stephen records his players at the lessons, to review their technique on the spot, and help them to make immediate corrections. 
+          
+        He uses the software Coaches Eye, which includes features such as slow motion and frame-by-frame scrubbing. 
+        
+        This will allow him to play back video from the current or previous lessons, and show areas of improvement. 
+        
+        <br><br>Coaches Eye also allows Stephen to mark up individual videos or compare two across both.
+        
+        As well as add audio and sketch lines, circles, and arrows to help break down video better.
+    
+    </h5>
+
+    </div>
+  </div>
+</div>
+
+<div style="background-color: lightgray;">
+<br><br>
+
+<div class="text-center text-dark" >
+   <h3>Reviews</h3>
+</div>
+
+<hr style="height: 1px; width: 75% ; margin:0 auto; color: black; background-color: black; border: none;">
+<br>
+
+<div class="row container-fluid bg-3">
+  <div id="posts">
+                  
+</div>
+
+</div>
+</div>
+<br>
+
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  
+  <!-- This line below loads everything -->
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase.js"></script>
+  
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-auth.js"></script> -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-firestore.js"></script> -->
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDBkICQCt53H1_cPbigFC_BuM8nFlYdQS8",
+      authDomain: "baseball-lessons-a5e57.firebaseapp.com",
+      databaseURL: "https://baseball-lessons-a5e57.firebaseio.com",
+      projectId: "baseball-lessons-a5e57",
+      storageBucket: "baseball-lessons-a5e57.appspot.com",
+      messagingSenderId: "304091917830",
+      appId: "1:304091917830:web:8a039bc3327615416add87",
+      measurementId: "G-L3PJ9XHT64"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  
+    //make auth and firestore referneces
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  
+  
+  </script>
+
+
+<script>
+
+  var validImagetypes = ["image/gif", "image/jpeg", "image/png"];
+  $("#selected-image").hide();
+
+  
+   //Preview Image in form
+   function previewImage(image_pic){
+      if(image_pic.files && image_pic.files[0]){
+        
+        var reader = new FileReader();
+        reader.onload = function(e){
+            $("#selected-image").attr('src', e.target.result);
+            $("#selected-image").fadeIn();
+
+        }
+        reader.readAsDataURL(image_pic.files[0]);
+
+      }
+
+        
+    }
+
+  $("#main-image").change(function(){
+      previewImage(this);
+  });
+
+  $("#save-post").click(function(){
+      $("#main-desc").removeClass("is-invalid");
+      $("#main-image").removeClass("is-invalid");
+
+      var desc = $("#main-desc").val();
+      var picture = $("#main-image").prop("files")[0];
+
+      if(!desc){
+          $("#main-desc").addClass("is-invalid");
+          return;
+      }
+
+      if(picture == null){
+          $("#main-image").addClass("is-invalid");
+          return;
+      }
+
+      if($.inArray(picture["type"], validImagetypes)<0){
+          $("#main-image").addClass("is-invalid");
+          return;
+      }
+
+
+      // upload and save to firebase storage and firebase DB
+      var databaseRef = firebase.database().ref().child("Images");
+
+      databaseRef.once("value").then(function(snapshot){
+      
+        var name = picture["name"];
+        var dateStr = new Date().getTime();
+        var fileCompleteName = name + "_" + dateStr;
+
+        var storageRef = firebase.storage().ref("Pics");
+        var postStorageRef = storageRef.child(fileCompleteName);
+
+        var uploadTask = postStorageRef.put(picture);
+
+        uploadTask.on("state_changed", 
+          
+          function progress(snapshot)
+          {
+          var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          
+          $("#upload-progress").html(Math.round(percentage) + "%");
+          $("#upload-progress").attr("style", "width:" + percentage + "%");
+
+          
+        },
+        function error(error){
+
+        },
+        function complete(){
+          uploadTask.snapshot.ref.getDownloadURL().then(function(downloadUrl){
+          
+            var picData = {
+              
+              "image": downloadUrl,
+              "name": fileCompleteName,
+              "desc": desc,
+              "counter": 5000 - counter
+              
+            };
+
+            var newPostRef = databaseRef.push();
+
+            newPostRef.set(picData, function(err){
+              if(err){
+                
+                $("#result").attr("class", "alert alert-danger");
+                $("#result").html(err.message);
+
+              }
+              else{
+                
+                $("#result").attr("class", "alert alert-danger");
+                $("#result").html("Image has been posted");
+
+                window.open("", "_self");
+
+              }
+              resetForm();
+           
+            });
+          
+          });
+        
+        }
+      
+      );
+
+    });
+  
+
+  });
+
+  
+  function resetForm(){
+    
+    $("#main-form")[0].reset();
+    $("#selected-image").fadeOut();
+    $("#upload-progress").html("done");
+
+  }
+
+  //***************** Retreive and display data from Firebase ***********
+
+  var dbPics = firebase.database().ref().child("Images").orderByChild("counter");
+
+  dbPics.on("value", function(pics){
+    if(pics.exists()){
+      var picsHtml = "";
+      
+      pics.forEach(function(singlePic){
+         counter = counter + 1;
+        
+        picsHtml += "<div class = 'jumbotron bg-light-grey border border-dark' style = 'margin: 25px; float: left; position: relative; left: 200px;'>";
+          
+          
+          picsHtml += "<div> <img class='center-block' style = 'margin: 5px' width= '400px' height = '250px' src = '";
+            picsHtml += singlePic.val().image;
+          picsHtml += "'/></div> <br>";
+          
+          picsHtml += "<div style = 'text-center: justify; width: 400px; color: black;'>";
+            picsHtml += singlePic.val().desc;
+          picsHtml += "</div> <br>";
+
+          picsHtml += "<div class='form-group' style = 'text-center: justify; color: black;'>";
+            picsHtml += "<button type='button' style = 'margin: 5px; width: 200px; position: relative; left: 100px;' class='btn btn-primary logged-in' data-toggle='modal' data-target='#editDescModal' onclick=updateFirebase('"+singlePic.key+"')>Update Description</button>";
+            picsHtml += "<button type='button' style = 'margin: 5px; width: 200px; position: relative; left: 100px;' class='btn btn-danger logged-in' onclick=deleteImage('"+singlePic.key+"')>Delete</button>";
+          picsHtml += "</div> <br>";
+
+        picsHtml += "</div>";
+      
+    
+      });
+
+      $("#posts").html(picsHtml);
+      setupUI(firebase.auth().currentUser);
+
+    }
+
+
+  });
+
+
+  function updateFirebase(key){
+    var updateRef = firebase.database().ref().child("Images").child(key);
+
+    //populates modal
+    updateRef.on("value", function(snapshot) {
+    var childData = snapshot.val();
+    var key = Object.keys(childData)[1];        
+    console.log(childData[key]);
+    $(".modal-body #Updated-desc").val(childData[key]);
+});
+
+    var submit = document.getElementById("SaveUpdate");
+
+    submit.onclick = function(){
+
+      var NewData = {
+
+        desc: $('#Updated-desc').val(),
+        
+      };
+      for (data in NewData){
+            if(NewData[data] != null && NewData[data] != 0){
+            updateRef.update(NewData);
+            }
+        }
+            location.reload();
+  
+    }
+
+  }
+
+  
+  //delete from Firebase
+  function deleteImage(key){
+    var deleteRef = firebase.database().ref().child("Images").child(key);
+
+    return deleteRef.remove()
+    .then(function() {
+      console.log("Success");
+    })
+    
+    .catch(function() {
+      console.log("Fail");
+    });
+  }
+
+  //***************** Ends here -- Retreive and display data from Firebase ***********
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="scripts/Test.js"></script>
+<script src="scripts/auth.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.CSS">
+    <link rel="stylesheet" href="login.CSS">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Test.CSS">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
+  </head>
+  <!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="Test.html" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+      <a href="Notable_Players.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Former Players</a>
+      <a href="Test_Weekly_Lessons.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Weekly Lessons</a>
+      <a href="Reviews.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Reviews</a>
+      <a href="#" class="logged-out w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" id="loginbtn" onclick="document.getElementById('modal-login').style.display='block'">Login</a>
+      <a href="#" class="logged-in w3-bar-item w3-button w3-padding-large" id="logout" style="display: none;">Logout</a>
+    </div>
+  
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Home</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Former Players</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Weekly Lessons</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Reviews</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Login</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">Logout</a>
+    </div>
+  </div>
+
+  <!-- login modal -->
+<div id="modal-login" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+        <div class="w3-center"><br>
+            <span onclick="document.getElementById('modal-login').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+          </div>
+          <form class="w3-container" id="login-form">
+            <div class="w3-section">
+              <label><b>Username</b></label>
+              <input class="w3-input w3-border w3-margin-bottom" id="login-email" type="text" placeholder="Enter Username" name="usrname" required>
+              <label><b>Password</b></label>
+              <input class="w3-input w3-border" id="login-password" type="password" placeholder="Enter Password" name="psw" required>
+              <button class="w3-button w3-block w3-red w3-section w3-padding" id="btnSave" type="submit">Login</button>
+            </div>
+          </form>
+    </div>
+</div>
+   
+  <div class="col-lg-12">
+    <div class="container" id="container">
+           <!-----------post pic starts -------------->
+      <div class="jumbotron bg-dark logged-in" style="margin-top: 15px;">
+        <script>
+          var counter = 0;
+        </script>
+        <div class="container text-center">
+          <form id="main-form">
+            <div class="form-group">
+              <textarea name="text" rows="2" placeholder="caption" class="form-control" id="main-desc"></textarea>
+                <div class="invalid-feedback">
+                   please write description
+                  </div>
+              </div>
+              <div class="form-group">
+                <input type="file" class="form-control" id="main-image" />
+                  <div class="invalid-feedback">
+                    please choose valid pic
+                    </div>
+                </div>
+              <div class="form-group">
+                <img id="selected-image" width="500" height="150" src="#" />
+
+                </div>
+              <div class="form-group">
+               <div class="progress bg-secondary">
+                 <div class="progress-bar bg-success" id="upload-progress" style="width: 0%;"></div>
+                  </div>
+
+              </div>
+                <div class="form-group">
+                  <button id="save-blog" type="button" style="width: 150px; height: 60px;" class="btn btn-light bg-light text-dark">Submit</button>
+                  </div>
+            </form>
+                   <div id="result">
+
+                   </div>
+
+            </div>
+          </div>
+
+               <!---------------- Post pic ends----------------- -->
+
+               <!-- -------------After post pic------------  -->
+               
+               <br><br>
+               <div class="text-center text-light">
+                 <h3>Reviews</h3>
+               </div>
+
+                <hr>
+                <br>
+
+                <div class="row container-fluid bg-3">
+                  <div id="blogs">
+                    
+                  </div>
+
+                </div>
+
+                <br>
+
+
+               <!-- -----------after post pic area ends------------------ -->
+
+               <!--------------- validation and post pics----------------- -->
+                
+               <!--------------- validation and post pics ends here----------------- -->
+
+        </div>
+      </div>
+   </div>
+   
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  
+  <!-- This line below loads everything -->
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase.js"></script>
+  
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-auth.js"></script> -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-firestore.js"></script> -->
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDBkICQCt53H1_cPbigFC_BuM8nFlYdQS8",
+      authDomain: "baseball-lessons-a5e57.firebaseapp.com",
+      databaseURL: "https://baseball-lessons-a5e57.firebaseio.com",
+      projectId: "baseball-lessons-a5e57",
+      storageBucket: "baseball-lessons-a5e57.appspot.com",
+      messagingSenderId: "304091917830",
+      appId: "1:304091917830:web:8a039bc3327615416add87",
+      measurementId: "G-L3PJ9XHT64"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  
+    //make auth and firestore referneces
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  
+  </script>
+
+  <script>
+
+    var validImagetypes = ["image/gif", "image/jpeg", "image/png"];
+    $("#selected-image").hide();
+
+    
+    //Preview the image
+    function previewImage(image_pic){
+      if(image_pic.files && image_pic.files[0]){
+        
+        var reader = new FileReader();
+        reader.onload = function(e){
+            $("#selected-image").attr('src', e.target.result);
+            $("#selected-image").fadeIn();
+
+        }
+        reader.readAsDataURL(image_pic.files[0]);
+
+      }
+
+        
+    }
+
+    $("#main-image").change(function(){
+        previewImage(this);
+    });
+
+    $("#save-blog").click(function(){
+        $("#main-desc").removeClass("is-invalid");
+        $("#main-image").removeClass("is-invalid");
+
+        var desc = $("#main-desc").val();
+        var picture = $("#main-image").prop("files")[0];
+
+        if(!desc){
+            $("#main-desc").addClass("is-invalid");
+            return;
+        }
+
+        if(picture == null){
+            $("#main-image").addClass("is-invalid");
+            return;
+        }
+
+        if($.inArray(picture["type"], validImagetypes)<0){
+            $("#main-image").addClass("is-invalid");
+            return;
+        }
+
+
+        // upload and save to firebase storage and firebase DB
+        var databaseRef = firebase.database().ref().child("Images");
+
+        databaseRef.once("value").then(function(snapshot){
+        
+          var name = picture["name"];
+          var dateStr = new Date().getTime();
+          var fileCompleteName = name + "_" + dateStr;
+
+          var storageRef = firebase.storage().ref("Pics");
+          var blogStorageRef = storageRef.child(fileCompleteName);
+
+          var uploadTask = blogStorageRef.put(picture);
+
+          uploadTask.on("state_changed", 
+            
+            function progress(snapshot)
+            {
+            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            
+            $("#upload-progress").html(Math.round(percentage) + "%");
+            $("#upload-progress").attr("style", "width:" + percentage + "%");
+
+            
+          },
+          function error(error){
+
+          },
+          function complete(){
+            uploadTask.snapshot.ref.getDownloadURL().then(function(downloadUrl){
+              var time = new Date();
+
+              var picData = {
+                
+                "image": downloadUrl,
+                "name": fileCompleteName,
+                "desc": desc,
+                "counter": 5000 - counter
+                
+              };
+
+              var newPostRef = databaseRef.push();
+
+              newPostRef.set(picData, function(err){
+                if(err){
+                  
+                  $("#result").attr("class", "alert alert-danger");
+                  $("#result").html(err.message);
+
+                }
+                else{
+                  
+                  $("#result").attr("class", "alert alert-danger");
+                  $("#result").html("Image has been posted");
+
+                  window.open("", "_self");
+
+                }
+                resetForm();
+             
+              });
+            
+            });
+          
+          }
+        
+        );
+
+      });
+    
+
+    });
+
+    
+    function resetForm(){
+      
+      $("#main-form")[0].reset();
+      $("#selected-image").fadeOut();
+      $("#upload-progress").html("done");
+
+    }
+
+    //***************** Retreive and display data from Firebase ***********
+
+    var dbPics = firebase.database().ref().child("Images").orderByChild("counter");
+
+    dbPics.on("value", function(pics){
+      if(pics.exists()){
+        var picsHtml = "";
+        
+        pics.forEach(function(singlePic){
+           counter = counter + 1;
+          
+          picsHtml += "<div class = 'jumbotron bg-light border border-dark'>";
+            
+            
+            picsHtml += "<div> <img class='center-block' width= '800px' height = '500px' src = '";
+              picsHtml += singlePic.val().image;
+            picsHtml += "'/></div> <br>";
+            
+            picsHtml += "<div style = 'text-center: justify; color: black;'>";
+              picsHtml += singlePic.val().desc;
+            picsHtml += "</div> <br>";
+
+            picsHtml += "<div class='form-group' style = 'text-center: justify; color: black;'>";
+              picsHtml += "<button type='button' class='btn btn-primary logged-in' data-toggle='modal' data-target='#exampleModal'>Update Description</button>";
+              picsHtml += "<button type='button' class='btn btn-danger logged-in' onclick=deleteImage('"+singlePic.key+"')>Delete</button>";
+            picsHtml += "</div> <br>";
+
+          picsHtml += "</div>";
+        });
+
+        $("#blogs").html(picsHtml);
+        setupUI(firebase.auth().currentUser);
+
+      }
+
+
+    });
+
+
+    //delete from Firebase
+    function deleteImage(key){
+      var deleteRef = firebase.database().ref().child("Images").child(key);
+
+      return deleteRef.remove()
+      .then(function() {
+        console.log("Success");
+      })
+      
+      .catch(function() {
+        console.log("Fail");
+      });
+    }
+
+    //***************** Ends here -- Retreive and display data from Firebase ***********
+
+  </script>
+
+
+  <script src="scripts/dropdown.js"></script>
+  <script src="scripts/index.js"></script>
+  <script src="scripts/auth.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
